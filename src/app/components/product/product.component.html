@@ -1,0 +1,63 @@
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-5">
+      <div class="card">
+        <div class="card-body">
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <input type="text" formControlName="name" placeholder="Name" class="form-control" [ngClass]="{'is-invalid': submitted && f.name.errors}" />
+              <div *ngIf="submitted && f.name.errors" class="text-danger">
+                <small *ngIf="f.name.errors.required">Name is required!</small>
+              </div>
+            </div>
+            <div class="form-group">
+              <textarea rows="4" formControlName="summary" placeholder="Summary" class="form-control" [ngClass]="{'is-invalid': submitted && f.summary.errors}"></textarea>
+              <div *ngIf="submitted && f.summary.errors" class="text-danger">
+                <small *ngIf="f.summary.errors.required">Summary is required!</small>
+                <small *ngIf="f.summary.errors.minlength">Summary must be at least 10 characters!</small>
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="text" formControlName="quantity" placeholder="Quantity" class="form-control" [ngClass]="{'is-invalid': submitted && f.quantity.errors}" />
+              <div *ngIf="submitted && f.quantity.errors" class="text-danger">
+                <small *ngIf="f.quantity.errors.required">Quantity is required!</small>
+                <small *ngIf="f.quantity.errors.match">Quantity is NAN!</small>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <input type="text" formControlName="color" class="form-control" placeholder="Color" [ngClass]="{'is-invalid': submitted && f.color.errors}">
+                  <div *ngIf="submitted && f.color.errors" class="text-danger">
+                    <small *ngIf="f.color.errors.required">Color is required!</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <input type="text" formControlName="size" class="form-control" placeholder="Size" [ngClass]="{'is-invalid': submitted && f.size.errors}">
+                  <div *ngIf="submitted && f.size.errors" class="text-danger">
+                    <small *ngIf="f.size.errors.required">Size is required!</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="text" formControlName="price" placeholder="Price" class="form-control" [ngClass]="{'is-invalid': submitted && f.price.errors}" />
+              <div *ngIf="submitted && f.price.errors" class="text-danger">
+                <small *ngIf="f.price.errors.required">Price is required!</small>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-info btn-block">SAVE</button>
+          </form>
+        </div>
+        <!--card-body-->
+      </div>
+      <!--card-->
+    </div>
+    <div class="col-md-7">
+      <app-product-list></app-product-list>
+    </div>
+  </div>
+</div>
