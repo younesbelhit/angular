@@ -9,21 +9,19 @@ import { Title }  from '@angular/platform-browser';
 })
 export class UserComponent implements OnInit {
 
-  users: any[];
-  user = {};
+  private users: any[];
+  private user = {};
+  private sub: any
 
   constructor(
     private userService: UserService,
     private titleService: Title
   ) { }
 
-  ngAfterViewInit(): void {
-    
-  }
-
+  
   ngOnInit() {
     this.titleService.setTitle('users');
-    this.userService.getUsers().subscribe((users) => {
+    this.sub = this.userService.getUsers().subscribe((users) => {
       this.users = users;
     })
   }
@@ -36,6 +34,10 @@ export class UserComponent implements OnInit {
     if(confirm('Are you sure ?')) {
       this.userService.trashUser(user);
     }
+  }
+
+  ngOnDestroy(){
+    this.sub.unsubscribe();
   }
 
 }

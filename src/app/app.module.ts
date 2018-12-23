@@ -16,6 +16,7 @@ import { ProductComponent } from './components/product/product.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductService } from './services/product.service';
 import { UploadComponent } from './components/upload/upload.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
 
 const routes: Routes = [
   {
@@ -34,6 +35,10 @@ const routes: Routes = [
   {
     path: 'product', 
     component: ProductComponent 
+  },
+  { 
+    path: 'product/:id', 
+    component: ProductDetailsComponent 
   },
   {
     path: 'upload', 
@@ -55,7 +60,8 @@ const routes: Routes = [
     NotFoundComponent,
     ProductComponent,
     ProductListComponent,
-    UploadComponent
+    UploadComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
